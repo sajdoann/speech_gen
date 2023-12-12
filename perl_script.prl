@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+system "mkdir data48k";
+system "mkdir data";
+$j=1;
+$n=40;
+while($j<=$n)
+{
+ $sj = sprintf("%02d",$j);
+ system "sed -n sentences.txt -e \"$j p\"";
+ # 1 channel, 16-bit, 16000 Hz version
+ system "sox data48k/$sj.wav -r 16000 data/S$sj.wav";  #downsampling to 16kHz
+ $j=$j+1;
+}
+
+ 
+
+
+
